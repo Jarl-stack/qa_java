@@ -12,13 +12,10 @@ import static org.junit.Assert.*;
 public class LionTest {
 
 
-    @Rule
-    public final ExpectedException exception = ExpectedException.none();
 
-    @Test
+    @Test(expected = Exception.class)
     public void lionInvalideSexShouldThrowExceptionTest() throws Exception {
         Feline feline = new Feline();
-        exception.expect(Exception.class);
         Lion lion = new Lion(feline, "Неправильный пол");
     }
 

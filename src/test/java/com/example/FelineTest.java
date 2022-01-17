@@ -14,7 +14,7 @@ public class FelineTest {
         Feline feline = new Feline();
         List<String> expected = Arrays.asList("Животные", "Птицы", "Рыба");
         List<String> actual = feline.eatMeat();
-        assertEquals("Хуйня", expected, actual);
+        assertEquals("Не вернулись значения еды хищника", expected, actual);
     }
 
     @Test

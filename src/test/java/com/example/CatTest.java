@@ -8,19 +8,30 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
+import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 
 public class CatTest {
 
+
+    @Test
+    public void catGedFoodLikePredatorTest() throws Exception {
+        Feline feline = new Feline();
+        Cat cat = new Cat(feline);
+        List<String> expected = Arrays.asList("Животные", "Птицы", "Рыба");
+        List<String> actual = cat.getFood();
+        Assert.assertEquals("Не вернулись значения еды хищника", expected, actual);
+    }
+
     @Mock
     Feline feline;
 
     @Test
-    public void catGedFoodLikePredatorTest() throws Exception {
+    public void catGedFoodLikePredatorMockTest() throws Exception {
         Cat cat = new Cat(feline);
-        Mockito.when(cat.getFood()).thenReturn(Arrays.asList("Животные", "Птицы", "Рыба"));
-        Assert.assertEquals(Arrays.asList("Животные", "Птицы", "Рыба"), cat.getFood());
+        Mockito.when(feline.eatMeat()).thenReturn(Arrays.asList("Бургеры", "Пицца", "Шаверма"));
+        Assert.assertEquals(Arrays.asList("Бургеры", "Пицца", "Шаверма"), cat.getFood());
     }
 
     @Test
